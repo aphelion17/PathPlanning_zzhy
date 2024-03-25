@@ -15,7 +15,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../Search_base
 from Search_3D.env3D import env
 from Search_3D.utils3D import getDist, getRay, g_Space, Heuristic, getNearest, isCollide, cost, children, heuristic_fun
 from Search_3D.plot_util3D import visualization
-import queue
+import queue_s
 
 
 class Weighted_A_star(object):
@@ -33,8 +33,8 @@ class Weighted_A_star(object):
         self.settings = 'NonCollisionChecking'
         self.start, self.goal = tuple(self.env.start), tuple(self.env.goal)
         self.g = {self.start:0,self.goal:0}
-        self.OPEN1 = queue.MinheapPQ() # store [point,priority]
-        self.OPEN2 = queue.MinheapPQ()
+        self.OPEN1 = queue_s.MinheapPQ() # store [point,priority]
+        self.OPEN2 = queue_s.MinheapPQ()
         self.Parent1, self.Parent2 = {}, {}
         self.CLOSED1, self.CLOSED2 = set(), set()
         self.V = []

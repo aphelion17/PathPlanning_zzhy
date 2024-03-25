@@ -12,7 +12,8 @@ from Search_3D.env3D import env
 from Search_3D.utils3D import getDist, heuristic_fun, getNearest, isinbound, isinobb, \
     cost, children, StateSpace
 from Search_3D.plot_util3D import visualization
-from Search_3D import queue
+# from Search_based_Planning.Search_3D import queue_s
+import queue_s
 import time
 
 
@@ -31,7 +32,7 @@ class Anytime_Dstar(object):
         self.env = env(resolution=resolution)
         self.settings = 'CollisionChecking'  # for collision checking
         self.x0, self.xt = tuple(self.env.start), tuple(self.env.goal)
-        self.OPEN = queue.MinheapPQ()
+        self.OPEN = queue_s.MinheapPQ()
         self.g = {}  # all g initialized at inf
         self.h = {}
         self.rhs = {self.xt: 0}  # rhs(x0) = 0
